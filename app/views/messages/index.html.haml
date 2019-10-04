@@ -1,0 +1,42 @@
+= render partial: "message"
+
+.wrapper
+  .chat-side
+    .side-header
+      .side-header__box
+        %p.side-header__box__user-name test-user
+        %ul.side-header__box__menu
+          %li.side-header__box__menu__new-group
+            = link_to do
+              %i.fas.fa-edit
+          %li.side-header__box__menu__edit-user
+            = link_to do
+              %i.fas.fa-cog
+    .groups
+      = link_to do
+        .group
+          %p.group__group-name test
+          %p.group__latest-message さようなら
+  .chat-main
+    .main-header
+      .main-header__left-box
+        %h2.main-header__left-box__current-group test-group
+        %ul.main-header__left-box__member-list 
+          Member:
+          %li.main-header__left-box__member-list__member test-user
+      = link_to do
+        .main-header__edit-btn Edit
+    .messages
+      .message
+        .message__upper-info
+          %p.message__upper-info__talker test-user
+          %p.message__upper-info__date 2019/10/03(Thu) 16:14:10
+        %p.message-text こんにちは！
+    .form
+      %form#new_message.new_message
+        .input-box
+          %input#message-content.input-box__text{placeholder: "type a message", type: "text"}
+          %label.input-box__image
+            %i.far.fa-image
+        %input.submit-btn{type: "submit", value: "Send"}
+
