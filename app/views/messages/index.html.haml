@@ -7,13 +7,13 @@
         %p.side-header__box__user-name test-user
         %ul.side-header__box__menu
           %li.side-header__box__menu__new-group
-            %a{:href => "#"}
+            = link_to do
               %i.fas.fa-edit
           %li.side-header__box__menu__edit-user
-            %a{:href => "#"}
+            = link_to do
               %i.fas.fa-cog
     .groups
-      %a{:href => "#"}
+      = link_to do
         .group
           %p.group__group-name test
           %p.group__latest-message さようなら
@@ -24,7 +24,7 @@
         %ul.main-header__left-box__member-list 
           Member:
           %li.main-header__left-box__member-list__member test-user
-      %a{:href => "#"}
+      = link_to do
         .main-header__edit-btn Edit
     .messages
       .message
@@ -35,8 +35,8 @@
     .form
       %form#new_message.new_message
         .input-box
-          %input#message-content.input-box__text{:placeholder => "type a message", :type => "text"}
+          %input#message-content.input-box__text{placeholder: "type a message", type: "text"}
           %label.input-box__image
             %i.far.fa-image
-        %input.submit-btn{:type => "submit", :value => "Send"}
+        %input.submit-btn{type: "submit", value: "Send"}
 
