@@ -1,3 +1,8 @@
 @import "./reset";
 @import "./variable";
-@import "./index";
+@import "./user";
+@import "config/colors";
+@import "modules/flash";
+@import "modules/group";
+@import "modules/side_bar";
+@import "modules/chat";
