@@ -21,10 +21,11 @@
         %p.message-text
           こんにちは！
     .form
-      %form#new_message.new_message
+      = form_for [@group, @message] do |f|
         .input-box
-          %input#message-content.input-box__text{placeholder: "type a message", type: "text"}
-          %label.input-box__image
+          = f.text_field :content, class: 'input-box__text', placeholder: "type a message"
+          = f.label :image, class: '.input-box__image' do
             %i.far.fa-image
-        %input.submit-btn{type: "submit", value: "Send"}
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'submit-btn'
 
