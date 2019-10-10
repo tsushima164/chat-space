@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
   def index
-    if  params[:keyword].present?
-      @users = User.where('name LIKE(?)', "#{params[:keyword]}%")
-    else
-      @users = []
-    end
+    @users = User.where('name LIKE(?)', "#{params[:keyword]}%").presence || []
 
     respond_to do |format|
       format.html
