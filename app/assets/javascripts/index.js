@@ -1,4 +1,5 @@
-$(function(){
+$(document).on('turbolinks:load', function() {
+  
   function buildUsersHTML(users){
     var html = `<div class="chat-group-user clearfix">
                <p class="chat-group-user__name">${users.name}</p>
@@ -35,8 +36,7 @@ $(function(){
      $("#user-search-result").empty();
      if (users.length !== 0) {
       users.forEach(function(user){
-      var html = buildUsersHTML(user);
-        $(`#user-search-result`).append(html);
+      $(`#user-search-result`).append(html);
       })
      }
      else {
