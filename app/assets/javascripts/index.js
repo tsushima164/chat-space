@@ -5,7 +5,7 @@ $(document).on('turbolinks:load', function() {
                <p class="chat-group-user__name">${users.name}</p>
                <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${users.id}" data-user-name="${users.name}">追加</a>
                </div>`
-    return html;
+               $(`#user-search-result`).append(html);
   }
 
   function appendNotUser(users){
@@ -36,7 +36,8 @@ $(document).on('turbolinks:load', function() {
      $("#user-search-result").empty();
      if (users.length !== 0) {
       users.forEach(function(user){
-      $(`#user-search-result`).append(html);
+        buildUsersHTML(user)
+        
       })
      }
      else {
