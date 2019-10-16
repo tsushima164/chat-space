@@ -1,11 +1,11 @@
-$(document).on('turbolinks:load', function() {
+$(function() {
   
   function buildUsersHTML(users){
     var html = `<div class="chat-group-user clearfix">
                <p class="chat-group-user__name">${users.name}</p>
                <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${users.id}" data-user-name="${users.name}">追加</a>
                </div>`
-               $(`#user-search-result`).append(html);
+               $("#user-search-result").append(html);
   }
 
   function appendNotUser(users){
@@ -16,12 +16,12 @@ $(document).on('turbolinks:load', function() {
   }
 
   function addUsers(id,name){
-    var html = `<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-8'>
-  <input name='group[user_ids][]' type='hidden' value='${id}'>
-  <p class='chat-group-user__name'>${name}</p>
-  <a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</a>
-</div>`
-  return html;
+    var html = `<div class="chat-group-user clearfix js-chat-member" id="chat-group-user-8">
+                  <input name="group[user_ids][]" type="hidden" value="${id}">
+                  <p class="chat-group-user__name">${name}</p>
+                  <a class="user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn">削除</a>
+                </div>`
+  $("#chat-group-users").append(html);
   }
 
   $("#user-search-field").on("keyup", function(){
@@ -42,20 +42,21 @@ $(document).on('turbolinks:load', function() {
      }
      else {
       var html = appendNotUser("一致するユーザーがいません")
-       $(`#user-search-result`).append(html);
+       $("#user-search-result").append(html);
      }
      })
      .fail(function() {
-      alert('ユーザー検索に失敗しました');
+      alert("ユーザー検索に失敗しました");
    })
   });
 
-  $(document).on("click",".user-search-add", function(users){
+  $(document).on("click",".user-search-add", function(e){
+      e.preventDefault();
       $(this).parent().remove();
-      var id = $(this).data('user-id');
+      var id = $(this).data("user-id");
       var name = $(this).data("user-name");
-      var html = addUsers(id,name);
-   $(`#chat-group-users`).append(html);
+      addUsers(id,name);
+   
   });
 
   $(document).on("click",".user-search-remove", function(users){
